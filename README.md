@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🇮🇳 Smart India Hackathon (SIH) — Production-Grade Redesign & Remake
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.2+-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
@@ -311,3 +312,7 @@ Every architectural phase, prompt iteration, component refactoring, and motion s
 ---
 
 *Smart India Hackathon 2026 // Ministry of Education’s Innovation Cell & AICTE // Government of India*
+=======
+# Remake-SIH-website.1
+This repository contains a complete frontend‑only remake of the Smart India Hackathon (SIH) website, built with Next.js 16+, GSAP, Framer Motion, and Lenis for smooth scroll experiences. The project emphasizes modern design principles, responsive layouts, and interactive animations inspired by leading portfolios and design systems.
+>>>>>>> 46e46e9042db6c85af512e10006e8f340abc1bc2
