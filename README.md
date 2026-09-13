@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🇮🇳 Smart India Hackathon (SIH) — Production-Grade Redesign & Remake
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.2+-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
@@ -8,8 +7,9 @@
 [![GSAP](https://img.shields.io/badge/GSAP-3.12+-88CE02?style=for-the-badge&logo=greensock&logoColor=white)](https://gsap.com/)
 [![Motion](https://img.shields.io/badge/Motion-12.4+-FF0055?style=for-the-badge&logo=framer&logoColor=white)](https://motion.dev/)
 [![Lenis](https://img.shields.io/badge/Lenis-Smooth_Scroll-000000?style=for-the-badge)](https://lenis.darkroom.engineering/)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
-> **Visual Concept: "Blueprint at 3AM"**  
+> **Visual Concept: "Blueprint at 3AM"**
 > An award-level, motion-rich, frontend-only digital reimagination of the **Smart India Hackathon (SIH)** national platform, crafted for high-performance evaluation, accessibility, and modern aesthetic excellence.
 
 ---
@@ -27,7 +27,8 @@
 - [9. Keyboard Shortcuts & Accessibility](#9-keyboard-shortcuts--accessibility)
 - [10. Getting Started Locally](#10-getting-started-locally)
 - [11. Production Build & Deployment](#11-production-build--deployment)
-- [12. AI Prompts & Development Methodology](#12-ai-prompts--development-methodology)
+- [12. Vercel Deployment Guide](#12-vercel-deployment-guide)
+- [13. AI Prompts & Development Methodology](#13-ai-prompts--development-methodology)
 
 ---
 
@@ -192,16 +193,18 @@ Every single official SIH theme is represented with custom high-resolution photo
 
 ## 7. Tech Stack & Engineering Architecture
 
-- **Framework:** Next.js 15+ (App Router, Server & Client Components)
-- **UI Runtime:** React 19
-- **Type Safety:** TypeScript 5.7+ (Strict Mode)
-- **Styling:** Tailwind CSS v4 + Vanilla CSS Custom Properties
-- **Motion & Scroll Dynamics:**
-  - `gsap` + `gsap/ScrollTrigger` for timeline scrub & odometer counting
-  - `lenis` for lag-smoothed inertia scrolling synchronized with GSAP ticker
-  - `motion/react` (Motion 12) for layout animations & AnimatePresence
-- **Icons:** `lucide-react`
-- **Typography:** Google Fonts (`Fraunces`, `Instrument_Sans`, `IBM_Plex_Mono`)
+| Layer | Technology | Version |
+|---|---|---|
+| **Framework** | Next.js (App Router, Server & Client Components) | 15.2+ |
+| **UI Runtime** | React | 19.0 |
+| **Type Safety** | TypeScript (Strict Mode) | 5.7+ |
+| **Styling** | Tailwind CSS v4 + Vanilla CSS Custom Properties | 4.0+ |
+| **Scroll Dynamics** | Lenis (lag-smoothed inertia scroll + GSAP sync) | 1.1+ |
+| **Animation Engine** | GSAP + ScrollTrigger (timeline scrub & odometers) | 3.12+ |
+| **Layout Animations** | Motion for React (AnimatePresence, layout) | 12.4+ |
+| **Icons** | lucide-react | latest |
+| **Typography** | Google Fonts (Fraunces, Instrument Sans, IBM Plex Mono) | — |
+| **Utilities** | clsx + tailwind-merge | latest |
 
 ---
 
@@ -242,9 +245,11 @@ sih-remake/
 │   └── images/               # 22 high-resolution visuals & sector photography
 ├── AI_PROMPTS.md             # Complete prompt engineering logs & design decisions
 ├── SIH-Design-System.md      # Comprehensive visual tokens & motion guidelines
+├── vercel.json               # Vercel deployment configuration
+├── next.config.mjs           # Next.js build configuration
 ├── package.json              # Dependencies and build scripts
 ├── tsconfig.json             # TypeScript compiler configuration
-└── README.md                 # Project documentation
+└── README.md                 # Project documentation (this file)
 ```
 
 ---
@@ -263,17 +268,18 @@ sih-remake/
 ## 10. Getting Started Locally
 
 ### Prerequisites
-- Node.js 18.18+ or Node 20+ / 22+
-- npm 9+ or pnpm / yarn
+- **Node.js** 18.18+ or Node 20+ / 22+
+- **npm** 9+ (or pnpm / yarn equivalent)
+- **Git** 2.30+
 
 ### Installation
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/sih-remake.git
-cd sih-remake
+git clone https://github.com/workwithSkshubham/Remake-SIH-website.1.git
+cd Remake-SIH-website.1
 
-# 2. Install dependencies
+# 2. Install all dependencies
 npm install
 
 # 3. Start local development server
@@ -282,6 +288,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+> **Note:** The project requires no `.env` files or external API keys. It is fully self-contained.
+
 ---
 
 ## 11. Production Build & Deployment
@@ -289,30 +297,65 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 To verify the production build locally:
 
 ```bash
-# Compile and optimize production bundle
+# Compile and optimize the production bundle
 npm run build
 
-# Run production server
+# Serve the production build
 npm start
 ```
 
-### Vercel / Netlify One-Click Deployment
-This project is pre-configured with zero additional environment variables required:
-- **Framework Preset:** Next.js
-- **Build Command:** `npm run build`
-- **Output Directory:** `.next`
-- **Node Version:** 18+
+### Linting
+
+```bash
+npm run lint
+```
 
 ---
 
-## 12. AI Prompts & Development Methodology
+## 12. Vercel Deployment Guide
+
+This project is pre-configured for **zero-configuration** deployment on Vercel.
+
+### One-Click Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/workwithSkshubham/Remake-SIH-website.1)
+
+### Manual Vercel Deployment
+
+1. Install the Vercel CLI:
+   ```bash
+   npm install -g vercel
+   ```
+2. Deploy from the project root:
+   ```bash
+   vercel
+   ```
+
+### Vercel Dashboard Settings
+
+| Setting | Value |
+|---|---|
+| **Framework Preset** | Next.js |
+| **Root Directory** | `./` (repo root) |
+| **Build Command** | `npm run build` |
+| **Output Directory** | `.next` (auto-detected) |
+| **Install Command** | `npm install` |
+| **Node.js Version** | 20.x (recommended) |
+
+> No environment variables are required for the initial deployment.
+
+---
+
+## 13. AI Prompts & Development Methodology
 
 Every architectural phase, prompt iteration, component refactoring, and motion synchronization step is documented in [`AI_PROMPTS.md`](./AI_PROMPTS.md) and [`SIH-Design-System.md`](./SIH-Design-System.md).
 
 ---
 
-*Smart India Hackathon 2026 // Ministry of Education’s Innovation Cell & AICTE // Government of India*
-=======
-# Remake-SIH-website.1
-This repository contains a complete frontend‑only remake of the Smart India Hackathon (SIH) website, built with Next.js 16+, GSAP, Framer Motion, and Lenis for smooth scroll experiences. The project emphasizes modern design principles, responsive layouts, and interactive animations inspired by leading portfolios and design systems.
->>>>>>> 46e46e9042db6c85af512e10006e8f340abc1bc2
+## License
+
+This project is built as an open educational demonstration. All SIH brand identity, themes, and ministry data referenced are the property of the **Ministry of Education, Government of India** and **AICTE**.
+
+---
+
+*Smart India Hackathon 2026 // Ministry of Education's Innovation Cell & AICTE // Government of India*
